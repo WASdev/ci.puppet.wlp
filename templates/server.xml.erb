@@ -1,0 +1,13 @@
+<server>
+
+ <featureManager>
+     <feature>servlet-3.0</feature>
+ </featureManager>
+
+
+  <httpEndpoint id="defaultHttpEndpoint" host="<%= scope.lookupvar('fqdn') %>" httpPort="9080" httpsPort="9443"/>
+  <% @apps.each do |appName| -%>
+  <% newname = appName.split(/\.(ZIP|zip|[EeJjRrWw][Aa][Rr]|[Ee][BbSs][Aa])/) %>
+   <include optional="true" location="<%= scope.lookupvar('liberty::variables::includesDir') %>/<%= newname.first%>.xml"/>
+ <% end -%>  
+</server>
