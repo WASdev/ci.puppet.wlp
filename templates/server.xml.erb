@@ -8,6 +8,6 @@
   <httpEndpoint id="defaultHttpEndpoint" host="<%= scope.lookupvar('fqdn') %>" httpPort="9080" httpsPort="9443"/>
   <% @apps.each do |appName| -%>
   <% newname = appName.split(/\.(ZIP|zip|[EeJjRrWw][Aa][Rr]|[Ee][BbSs][Aa])/) %>
-   <include optional="true" location="<%= scope.lookupvar('liberty::variables::includesDir') %>/<%= newname.first%>.xml"/>
+   <include optional="true" location="<%= scope.lookupvar('wlp::includesDir_final') %>/<%= newname.first%>.xml"/>
  <% end -%>  
 </server>

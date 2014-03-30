@@ -1,22 +1,18 @@
-class liberty::create_server  {
+class wlp::create_server  {
   
-  $apps = $liberty::variables::appNames
-#  notify {$apps:}
-
+  $apps = $wlp::appNames_final
   # Create the server
   exec { "create_server":
-    command => "server create ${liberty::variables::serverName}",    
-    path    => "${liberty::variables::path}",
-    require => Class['liberty::install_wlp'],
+    command => "server create ${wlp::serverName_final}",    
+    path    => "${wlp::path_final}",
+    require => Class['wlp::install'],
   }  ->
-
  # Copy the server.xml to the server
-  file { "${liberty::variables::install_root}/${liberty::variables::baseDir}/wlp/usr/servers/${liberty::variables::serverName}/server.xml":
+  file { "${wlp::install_root_final}/${wlp::baseDir_final}/wlp/usr/servers/${wlp::serverName_final}/server.xml":
         mode    => "0644",
-        content  => template("liberty/server.xml.erb"),
+        content  => template("wlp/server.xml.erb"),
         replace => true,
         require => Exec["create_server"],
-  } 
- 
+  }  
 }
 
