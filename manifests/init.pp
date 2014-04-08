@@ -189,11 +189,6 @@ class wlp (
     'UNSET' => $includesDir_derived,
     default => $includesDir,
   }
-
-  $dependantLibs_final = $dependantLibs ? {
-    'UNSET' => $::wlp::params::dependantLibs,
-    default => $dependantLibs,
-  }
   
   $path_derived = "${java_home_final}/bin:/opt/puppet/bin:${install_root_final}/${baseDir_final}/wlp/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin"
   $path_final = $path ? {
