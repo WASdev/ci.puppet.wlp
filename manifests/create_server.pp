@@ -5,6 +5,7 @@ class wlp::create_server  {
   exec { "create_server":
     command => "server create ${wlp::serverName_final}",    
     path    => "${wlp::path_final}",
+    returns => ["0","1",],
     require => Class['wlp::install'],
   }  ->
  # Copy the server.xml to the server
