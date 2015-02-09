@@ -5,7 +5,7 @@
  </featureManager>
 
 
-  <httpEndpoint id="defaultHttpEndpoint" host="0.0.0.0" httpPort="9080" httpsPort="9443"/>
+  <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443"/>
   <% @apps.each do |appName| -%>
   <% newname = appName.split(/\.(ZIP|zip|[EeJjRrWw][Aa][Rr]|[Ee][BbSs][Aa])/) %>
    <include optional="true" location="<%= scope.lookupvar('wlp::includesDir_final') %>/<%= newname.first%>.xml"/>
