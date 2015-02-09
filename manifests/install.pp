@@ -27,6 +27,7 @@ class wlp::install {
           # extract from source to ${liberty::variables::install_root}
           exec { "unjar_wlp":
             command => "java -jar ${wlp::serverBinary_final} --acceptLicense ${wlp::install_root_final}/${wlp::baseDir_final}",
+            returns => ["0","4",],
             path    => "${wlp::path_final}",
           } ->
           # change permissions for ${liberty::variables::install_root}/wlp/
